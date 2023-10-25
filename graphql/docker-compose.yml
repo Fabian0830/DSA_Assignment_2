@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '5.7.43'
+
+services:
+  mysql:
+    image: mysql:5.7.43
+    container_name: graphql-assignment
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: graph_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+    healthcheck:
+      test: ["CMD", "ping", "mysqladmin", "localhost", "-h"]
+      interval: 2m00s
+      timeout: 30s
+      retries: 5
+      start_period: 20s
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:      
