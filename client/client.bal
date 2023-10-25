@@ -1,9 +1,7 @@
 import ballerina/http;
 
-
 public class GraphQLClient {
     private http:Client httpClient;
-
 
     private json mockUser = {};
     private json mockUsers = [];
